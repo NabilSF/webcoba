@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Birthday Gate | Fauziah Lestari</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Work+Sans:wght@400;500&family=Space+Mono:wght@500&family=Epilogue:ital,wght@0,300;1,300&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0eee9",
+                        "on-secondary-container": "#576c1d",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1b1c19",
+                        "tertiary-fixed-dim": "#e6bad2",
+                        "on-tertiary-fixed-variant": "#5d3d50",
+                        "secondary": "#516617",
+                        "on-tertiary-fixed": "#2d1224",
+                        "on-secondary-fixed": "#161f00",
+                        "surface-bright": "#fbf9f4",
+                        "primary-fixed": "#ffd9e0",
+                        "surface-container-high": "#eae8e3",
+                        "surface-tint": "#9e3c5a",
+                        "inverse-on-surface": "#f2f1ec",
+                        "tertiary-fixed": "#ffd8ec",
+                        "primary-container": "#6b1434",
+                        "primary-fixed-dim": "#ffb1c3",
+                        "on-background": "#1b1c19",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#30312e",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#877276",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#ef7d9c",
+                        "surface-container-highest": "#e4e2dd",
+                        "inverse-primary": "#ffb1c3",
+                        "secondary-fixed": "#d3ed8f",
+                        "outline-variant": "#dac0c4",
+                        "surface-variant": "#e4e2dd",
+                        "background": "#fbf9f4",
+                        "on-primary-fixed-variant": "#7f2543",
+                        "on-secondary-fixed-variant": "#3a4d00",
+                        "surface": "#fbf9f4",
+                        "on-surface-variant": "#554246",
+                        "secondary-container": "#d3ed8f",
+                        "tertiary-container": "#4c2e41",
+                        "surface-dim": "#dbdad5",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f5f3ee",
+                        "tertiary": "#34192b",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#3f0019",
+                        "primary": "#4b001f",
+                        "on-tertiary-container": "#be95ac",
+                        "secondary-fixed-dim": "#b7d076"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-page": "40px",
+                        "unit": "8px",
+                        "sticker-offset": "-20px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-mono": ["Space Mono"],
+                        "body-sm": ["Work Sans"],
+                        "headline-main": ["Bricolage Grotesque"],
+                        "body-lg": ["Work Sans"],
+                        "script-highlight": ["Epilogue"],
+                        "display-lg": ["Bricolage Grotesque"],
+                        "display-lg-mobile": ["Bricolage Grotesque"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fde047;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .paper-texture {
+            display: none !important;
+        }
+
+        ..scrapbook-card {
+            mask-image: radial-gradient(circle at 12px 12px, transparent 12px, white 12.5px);
+            mask-size: 24px 24px;
+            mask-repeat: repeat;
+            -webkit-mask-image: url("data:image/svg+xml,...");
+            -webkit-mask-size: 40px 40px;
+            background-color: #fbf9f4;
+        }
+
+        .sticker-border {
+            filter: drop-shadow(0 2px 0 #fff) drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 -2px 0 #fff);
+        }
+
+        .polaroid-tilt {
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid-tilt:hover {
+            transform: rotate(1deg) scale(1.05);
+        }
+
+        .washi-tape {
+            background-color: rgba(211, 237, 143, 0.6);
+            backdrop-filter: blur(1px);
+            height: 30px;
+            width: 100px;
+            position: absolute;
+            z-index: 10;
+        }
+
+        .floating {
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(2deg);
+            }
+        }
+
+        .btn-press {
+            transition: transform 0.1s;
+        }
+
+        .btn-press:active {
+            transform: translate(2px, 2px);
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        .animate-shake {
+            animation: shake 0.2s ease-in-out 0s 2;
+        }
+    </style>
+</head>
+
+<body class="font-body-sm text-on-surface p-6">
+    <div class="paper-texture"></div>
+    <div class="absolute top-10 left-10 w-32 h-32 floating opacity-80 pointer-events-none">
+        <img alt="Sticker" class="sticker-border w-full"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBQ3O6NEuMI04gdz5WGsIOt67e_UeND3onkxpb0-s3ZnZ5LuXPpFc8azd-7OHnC0RixkDGFazzmLbHQ_0IAsNYScNL1-EKHLUlnaufFO3Y7xslFuvUll-hwWtq8sBvVc2cmZdpMCvurXQUZv5XXXlF29uLqjcq7mBV-Kh31ei3LQk_O5Ba7hnqseOMCtvl_fwN0_Ies1PjwK9c7u2bPem4ZWUDS63zozWHtr74FuIwGBPr5kKTBQIJyz4dsCrgnp1T0kkTDgJlf3g" />
+    </div>
+    <div class="absolute bottom-10 right-10 w-40 h-40 floating opacity-80 pointer-events-none"
+        style="animation-delay: -2s;">
+        <img alt="Sticker" class="sticker-border w-full"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu8gVgft5WevaT0Ue5suj--m3RVYfnzrgafUbNOjBkIvi9IMyNgyg2YNUvMBPTCvwTUoE7hYa39nNI_6tJYgT7wtnrIsJLTMX5f0_X5tb_FaExx_agHBkKNO-NbXgyA2X4fSy1ibZaw3M1Q1SRXT8yFz9FVu_Vi2To12M24Yn8_TfBUmFR864F7Y-2BfHEDeXJCAmeUdgA9x5F1SjbbWSRfJy-c0xPOybUXinD9iAs4enlgomiJHP6F8w_-hgT-0eMEENpus4iNlI" />
+    </div>
+
+    <div class="relative w-full max-w-lg z-10">
+        <div class="washi-tape -top-4 -left-6 rotate-[-25deg]"></div>
+        <div class="washi-tape -bottom-4 -right-6 rotate-[15deg] bg-primary-fixed opacity-40"></div>
+
+        <main
+            class="scrapbook-card bg-surface-bright p-12 md:p-16 flex flex-col items-center text-center shadow-xl relative overflow-hidden">
+            <div class="polaroid-tilt bg-white p-3 pb-8 shadow-md mb-10 w-48 border-outline-variant border">
+                <div class="aspect-square bg-surface-container overflow-hidden relative">
+                    <img class="w-full h-full object-cover"
+                        src="foto page awal.jpeg" />
+                    <div class="absolute inset-0 bg-primary/5"></div>
+                </div>
+                <p class="font-script-highlight text-on-surface-variant text-[18px] mt-4">pretty girl vibes</p>
+            </div>
+
+            <div class="space-y-2 mb-10">
+                <h1 class="font-headline-main text-headline-main text-primary tracking-tight leading-none">Are you the
+                    birthday girl?</h1>
+                <p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">CELEBRATING
+                    MY FAVORITE PERSON</p>
+            </div>
+
+            <form class="w-full max-w-sm space-y-8 relative" id="gateForm">
+                <div class="relative group">
+                    <label class="block text-label-mono text-primary mb-2 text-left" for="birthday">Tanggal
+                        Spesial-mu</label>
+                    <input
+                        class="w-full bg-transparent border-b-2 border-dashed border-outline text-body-lg font-body-lg py-3 px-1 focus:outline-none focus:border-primary transition-colors text-center placeholder:text-outline-variant"
+                        id="birthday" placeholder="e.g. 24 Mei" required type="text" />
+                    <div
+                        class="absolute right-2 sm:-right-12 -top-6 sm:top-4 rotate-12 bg-secondary-fixed px-2 sm:px-3 py-1 text-[10px] sm:text-label-mono text-on-secondary-fixed shadow-sm rounded-sm border border-secondary pointer-events-none">
+                        Hint: Your special day!</div>
+                </div>
+                <div class="flex flex-col items-center gap-6">
+                    <button
+                        class="btn-press group relative inline-flex items-center justify-center px-10 py-4 bg-primary text-on-primary font-headline-main text-xl rounded-none shadow-[4px_4px_0px_#161f00] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                        type="submit">
+                        <span>MASUK SEKARANG</span>
+                        <span
+                            class="material-symbols-outlined ml-2 group-hover:rotate-12 transition-transform">favorite</span>
+                    </button>
+                    <div class="flex items-center gap-2">
+                        <div class="h-[1px] w-8 bg-outline-variant"></div>
+                        <span class="font-label-mono text-body-sm text-outline">SECRET ACCESS ONLY</span>
+                        <div class="h-[1px] w-8 bg-outline-variant"></div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="absolute -bottom-4 left-8 floating" style="animation-delay: -1s;">
+                <div
+                    class="w-20 h-20 bg-primary-fixed-dim rounded-full flex items-center justify-center border-4 border-white shadow-md rotate-[-15deg]">
+                    <span class="font-display-lg text-primary text-3xl">21</span>
+                </div>
+            </div>
+        </main>
+
+        <div class="mt-8 text-center space-y-1">
+            <p class="font-label-mono text-on-secondary-fixed opacity-70">FOREVER FAVOURITE</p>
+        </div>
+    </div>
+
+    <div class="fixed bottom-0 left-0 w-full bg-primary py-2 overflow-hidden whitespace-nowrap z-0">
+        <div class="inline-block animate-marquee">
+            <span class="font-label-mono text-on-primary mx-4">FAUZIAH LESTARI DAY • HAPPY BIRTHDAY SAYANGKU • SOULMATE FOREVER • MY FOREVER AND ALWAYS • </span>
+            <span class="font-label-mono text-on-primary mx-4">FAUZIAH LESTARI DAY • HAPPY BIRTHDAY SAYANGKU • SOULMATE FOREVER • MY FOREVER AND ALWAYS • </span>
+            <span class="font-label-mono text-on-primary mx-4">FAUZIAH LESTARI DAY • HAPPY BIRTHDAY SAYANGKU • SOULMATE FOREVER • MY FOREVER AND ALWAYS • </span>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('gateForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const val = document.getElementById('birthday').value.toLowerCase();
+
+            if (val.includes('24') && val.includes('mei')) {
+                const btn = e.target.querySelector('button');
+                btn.innerHTML = 'YEAY! LOADING...';
+                btn.classList.add('bg-secondary', 'text-on-secondary');
+
+                setTimeout(() => {
+                    alert('Selamat Ulang Tahun, sayangku ucik! 🎉 Membuka akses ke Bestie Files...');
+                    window.location.href = 'main.html'; // Pindah ke halaman utama
+                }, 800);
+            } else {
+                const input = document.getElementById('birthday');
+                input.classList.add('animate-shake', 'border-error');
+                setTimeout(() => input.classList.remove('animate-shake'), 500);
+                alert('Hmm, sepertinya tanggalnya kurang tepat. Coba ingat-ingat lagi hari spesialmu! ✨');
+            }
+        });
+    </script>
+</body>
+
+</html>
